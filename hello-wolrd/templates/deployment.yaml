@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-wolrd.fullname" . }}
+  name: {{ include "hello-wolrd.fullname" . }} -deployment
   labels:
-    {{- include "hello-wolrd.labels" . | nindent 4 }}
+    {{- include "hello-wolrd.labels" . | nindent 4 }} -deployment
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
