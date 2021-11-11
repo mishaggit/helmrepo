@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage ("Terraform Command") {
+        stage ("3- Terraform Command") {
             steps {
                 echo "Choice is ${params.CHOICES}"
                 script {
