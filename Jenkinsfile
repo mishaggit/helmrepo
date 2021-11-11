@@ -37,14 +37,14 @@ pipeline {
         stage ("3- Helm test") {
             steps {
                 echo "=================== test"
-                script {
-                    sh "helm list"
-                    /*for (value in folderstf) {
+                script {                    
+                    for (value in folderstf) {
                         dir("$value"){
                             sh "echo $PATH"
                             sh "echo test"
+                            sh "helm list"
                         }
-                    }*/
+                    }
                 } 
             }
         }
