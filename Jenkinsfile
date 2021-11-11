@@ -45,6 +45,7 @@ pipeline {
                             sh "echo $PATH"
                             sh "echo test"
                             sh "helm list"
+                            sh "helm deploy"
                             //sh "helm deploy"
                         }
                     }
