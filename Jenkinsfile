@@ -21,6 +21,7 @@ pipeline {
         stage('2- Find all fodlers from given folder') {
             steps {
                 script {
+                    //sh "gcloud container clusters get-credentials test-gke-cluster-1 --region europe-west1 --project myproject-7777777"
                     folders = sh(returnStdout: true, script: "find -path './[^.]*' -prune -type d").trim()
                     echo "$folders"
                     folderstf = "$folders".split()
@@ -43,6 +44,7 @@ pipeline {
                             sh "echo $PATH"
                             sh "echo test"
                             sh "helm list"
+                            //sh "helm deploy"
                         }
                     }
                 } 
