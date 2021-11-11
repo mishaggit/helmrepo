@@ -21,6 +21,7 @@ pipeline {
         stage('2- Find all fodlers from given folder') {
             steps {
                 script {
+                    sh "gcloud container clusters get-credentials test-gke-cluster-1 --region europe-west1 --project myproject-7777777"
                     folders = sh(returnStdout: true, script: "find -path './[^.]*' -prune -type d").trim()
                     echo "$folders"
                     folderstf = "$folders".split()
@@ -28,20 +29,23 @@ pipeline {
                     echo "$folderstf"
                     echo "=================================list"
                     folderstf.each {
-                        //val -> println "$val"
-                        val -> dir("$val") {script {sh "helm"}}
+                        val -> println "$val"
+                        //val -> dir("$val") {script {sh "helm"}}
                     }
                 }
             }
         }
-        stage ("Terraform Command") {
+        stage ("3- Helm test") {
             steps {
-                echo "Choice is ${params.CHOICES}"
-                script {
+                echo "____________________"
+                script {                    
+                    //sh "gcloud container clusters get-credentials test-gke-cluster-1 --region europe-west1 --project myproject-7777777"
                     for (value in folderstf) {
                         dir("$value"){
                             sh "echo $PATH"
                             sh "echo test"
+                            sh "helm list"
+                            //sh "helm deploy"
                         }
                     }
                 } 
@@ -50,6 +54,7 @@ pipeline {
         /*stage('Deploy ') {
             when { anyOf {branch "main";branch "master" } }
             steps {
+                echo "Choice is ${params.CHOICES}"
                 script {
                     for (value in folderstf){
                         dir("$value") {
