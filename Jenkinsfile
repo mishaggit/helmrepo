@@ -28,28 +28,30 @@ pipeline {
                     echo "$folderstf"
                     echo "=================================list"
                     folderstf.each {
-                        //val -> println "$val"
-                        val -> dir("$val") {script {sh "helm"}}
+                        val -> println "$val"
+                        //val -> dir("$val") {script {sh "helm"}}
                     }
                 }
             }
         }
-        stage ("3- Terraform Command") {
+        stage ("3- Helm test") {
             steps {
-                echo "Choice is ${params.CHOICES}"
+                echo "=================== test"
                 script {
-                    for (value in folderstf) {
+                    sh "helm list"
+                    /*for (value in folderstf) {
                         dir("$value"){
                             sh "echo $PATH"
                             sh "echo test"
                         }
-                    }
+                    }*/
                 } 
             }
         }
         /*stage('Deploy ') {
             when { anyOf {branch "main";branch "master" } }
             steps {
+                echo "Choice is ${params.CHOICES}"
                 script {
                     for (value in folderstf){
                         dir("$value") {
