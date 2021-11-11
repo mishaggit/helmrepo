@@ -29,7 +29,7 @@ pipeline {
                     echo "=================================list"
                     folderstf.each {
                         //val -> println "$val"
-                        val -> dir("$val") {script {sh "terraform init"}}
+                        val -> dir("$val") {script {sh "helm"}}
                     }
                 }
             }
@@ -42,31 +42,25 @@ pipeline {
                         dir("$value"){
                             sh "echo $PATH"
                             sh "echo test"
-                            sh "terraform init"
-                            sh "terraform validate"
-                            sh "terraform plan"
                         }
                     }
                 } 
             }
         }
-        stage('TF Apply') {
+        /*stage('Deploy ') {
             when { anyOf {branch "main";branch "master" } }
             steps {
-                ansiColor('xterm') {
-                    script {
-                        for (value in folderstf){
-                            dir("$value") {
-                                sh "echo test apply update"
-                                input(message: 'Do you want TF Apply', ok: 'Proceed')
-                                sh "terraform apply -input=false -auto-approve"
-                                //sh "${params.CHOICES} -input=false -auto-approve"
-                            }
+                script {
+                    for (value in folderstf){
+                        dir("$value") {
+                            sh "echo test update"
+                            input(message: 'Do you want deploy', ok: 'Proceed')
+                            //sh "helm"
                         }
                     }
                 }
             }
-        }
+        }*/
     }
     post {
         always {
