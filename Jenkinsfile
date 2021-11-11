@@ -36,7 +36,7 @@ pipeline {
         }
         stage ("3- Helm test") {
             steps {
-                echo "=================== test"
+                echo "____________________"
                 script {                    
                     for (value in folderstf) {
                         dir("$value"){
