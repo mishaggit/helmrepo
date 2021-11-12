@@ -47,7 +47,7 @@ pipeline {
                             sh "pwd"
                             sh "helm upgrade app1 ./"
                             //sh "helm upgrade app1 hello-world --values ./hello-world/values.yaml"
-                            sh "helm status app1"
+                            sh "kubectl get pods"
                         }
                     }
                 } 
