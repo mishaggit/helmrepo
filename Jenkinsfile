@@ -45,6 +45,7 @@ pipeline {
                             //sh "echo $PATH"
                             sh "helm list"
                             sh "pwd"
+                            sh "helm upgrade app1 ./"
                             //sh "helm upgrade app1 hello-world --values ./hello-world/values.yaml"
                             sh "helm status app1"
                         }
