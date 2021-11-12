@@ -43,9 +43,8 @@ pipeline {
                     for (value in folderstf) {
                         dir("$value"){
                             //sh "echo $PATH"
-                            sh "echo test"
                             sh "helm list"
-                            sh "helm install app1 hello-world/"
+                            //sh "helm upgrade app1 hello-world/"
                         }
                     }
                 } 
