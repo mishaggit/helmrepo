@@ -45,7 +45,7 @@ pipeline {
                             sh "echo $PATH"
                             sh "echo test"
                             sh "helm list"
-                            sh "helm install app1 hello-wolrd/"
+                            sh "helm install app1 hello-world/"
                         }
                     }
                 } 
