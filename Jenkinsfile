@@ -42,7 +42,7 @@ pipeline {
                     //sh "gcloud container clusters get-credentials test-gke-cluster-1 --region europe-west1 --project myproject-7777777"
                     for (value in folderstf) {
                         dir("$value"){
-                            sh "echo $PATH"
+                            //sh "echo $PATH"
                             sh "echo test"
                             sh "helm list"
                             sh "helm create hello-world"
