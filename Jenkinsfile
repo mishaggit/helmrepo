@@ -44,7 +44,7 @@ pipeline {
                         dir("$value"){
                             //sh "echo $PATH"
                             sh "helm list"
-                            sh "helm upgrade app1 hello-world/"
+                            sh "helm upgrade app1 hello-world --values ./hello-world/values.yaml"
                             sh "helm status app1"
                         }
                     }
