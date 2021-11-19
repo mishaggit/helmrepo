@@ -47,6 +47,7 @@ pipeline {
                             sh "pwd"
                             sh "helm upgrade app1 ./"
                             sh "kubectl get pods"
+                            sh "./gradlew tasks"
                         }
                     }
                 } 
