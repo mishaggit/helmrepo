@@ -45,9 +45,9 @@ pipeline {
                             //sh "echo $PATH"
                             sh "helm list"
                             sh "pwd"
-                            sh "helm upgrade app1 ./"
-                            sh "kubectl get pods"
-                            sh "gradle run"
+                            //sh "helm upgrade app1 ./"
+                            //sh "kubectl get pods"
+                            sh "gradle build"
                         }
                     }
                 } 
